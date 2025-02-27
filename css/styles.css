@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    width: 60%;
+    width: 80%;
     margin: auto;
     background: white;
     padding: 20px;
@@ -36,4 +36,11 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+#temasTeoricos, #temasPracticos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    text-align: left;
 }
