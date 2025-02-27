@@ -50,7 +50,6 @@ const temasPracticos = [
 
 let estudianteActual = "";
 
-// Seleccionar estudiante
 function seleccionarEstudiante() {
     estudianteActual = document.getElementById("nombreEstudiante").value.trim();
     if (!estudianteActual) {
@@ -58,7 +57,6 @@ function seleccionarEstudiante() {
         return;
     }
 
-    // Cargar datos del estudiante si existen
     let datos = JSON.parse(localStorage.getItem("estudiantes")) || {};
     if (!(estudianteActual in datos)) {
         datos[estudianteActual] = { teoricos: Array(42).fill(false), practicos: Array(42).fill(false) };
@@ -68,7 +66,6 @@ function seleccionarEstudiante() {
     mostrarTemas();
 }
 
-// Mostrar los temas en la interfaz
 function mostrarTemas() {
     document.getElementById("temasContainer").classList.remove("hidden");
     let datos = JSON.parse(localStorage.getItem("estudiantes")) || {};
@@ -81,27 +78,32 @@ function mostrarTemas() {
     contPracticos.innerHTML = "";
 
     temasTeoricos.forEach((tema, i) => {
-        contTeoricos.innerHTML += `<div>
+        contTeoricos.innerHTML += `<div style="margin-bottom: 5px;">
             <input type="checkbox" id="teorico${i}" ${estudiante.teoricos[i] ? "checked" : ""}>
             <label for="teorico${i}">${tema}</label>
         </div>`;
     });
 
     temasPracticos.forEach((tema, i) => {
-        contPracticos.innerHTML += `<div>
+        contPracticos.innerHTML += `<div style="margin-bottom: 5px;">
             <input type="checkbox" id="practico${i}" ${estudiante.practicos[i] ? "checked" : ""}>
             <label for="practico${i}">${tema}</label>
         </div>`;
     });
 }
 
-// Guardar progreso en localStorage
 function guardarProgreso() {
     let datos = JSON.parse(localStorage.getItem("estudiantes")) || {};
     let estudiante = datos[estudianteActual];
 
     estudiante.teoricos = temasTeoricos.map((_, i) => document.getElementById(`teorico${i}`).checked);
     estudiante.practicos = temasPracticos.map((_, i) => document.getElementById(`practico${i}`).checked);
+
+    datos[estudianteActual] = estudiante;
+    localStorage.setItem("estudiantes", JSON.stringify(datos));
+
+    alert("Progreso guardado.");
+}
 
     datos[estudianteActual] = estudiante;
     localStorage.setItem("estudiantes", JSON.stringify(datos));
