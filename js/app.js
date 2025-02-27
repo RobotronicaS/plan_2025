@@ -1,6 +1,7 @@
 const temasTeoricos = [
     "Tipos de señales", "Introducción a los transistores", "Introducción a los diodos",
-    "Introducción a los resistores", "Introducción a los inductores", "Introducción a los capacitores"
+    "Introducción a los resistores", "Introducción a los inductores", "Introducción a los capacitores",
+    "Sistemas numéricos", "Operaciones con binario, octal y hexadecimal", "Código BCD, Gray y Exceso-3"
 ];
 
 const temasPracticos = [
