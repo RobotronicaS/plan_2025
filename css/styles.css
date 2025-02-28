@@ -40,6 +40,8 @@ h1 {
     box-shadow: 0px 0px 5px #000;
     height: 400px; /* Altura fija */
     overflow-y: auto; /* Activa scroll vertical */
+    overflow-x: auto; /* Activa scroll horizontal si es necesario */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
     scrollbar-width: thin;
     scrollbar-color: #00aaff #1e1e1e;
 }
@@ -47,6 +49,7 @@ h1 {
 /* Scroll en Chrome, Edge y Safari */
 .temas-column::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 .temas-column::-webkit-scrollbar-thumb {
@@ -69,27 +72,30 @@ h1 {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    min-width: 100%; /* Asegura que los ítems se mantengan en una sola línea */
 }
 
-/* Cada tema se ajusta a su contenido */
+/* Cada tema se ajusta bien */
 .temas-column li {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre el checkbox y el texto */
+    gap: 10px;
     margin-bottom: 8px;
-    white-space: nowrap; /* Evita que el texto se corte en varias líneas */
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow: hidden; /* Asegura que el texto no se corte */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es muy largo */
 }
 
-/* Asegura que el texto se ajuste sin desbordar */
+/* Etiquetas de los temas */
 .temas-column label {
-    display: inline-block;
     font-size: 16px;
-    flex-grow: 1; /* Ocupa el espacio restante */
-    word-break: break-word; /* Permite que el texto se ajuste si es muy largo */
+    flex-grow: 1; /* Hace que el texto use el espacio restante */
+    min-width: 100px;
 }
 
-/* Ajuste del checkbox */
+/* Ajuste del checkbox para estar alineado */
 input[type="checkbox"] {
     transform: scale(1.2);
     accent-color: #00aaff;
+    margin-right: 5px;
 }
