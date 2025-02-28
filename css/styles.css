@@ -84,13 +84,14 @@ h1 {
     white-space: nowrap; /* Evita el salto de línea */
     overflow: hidden; /* Asegura que el texto no se corte */
     text-overflow: ellipsis; /* Muestra "..." si el texto es muy largo */
+    min-width: 300px; /* Asegura que no se contraiga demasiado */
 }
 
 /* Etiquetas de los temas */
 .temas-column label {
     font-size: 16px;
     flex-grow: 1; /* Hace que el texto use el espacio restante */
-    min-width: 100px;
+    min-width: 300px; /* Mantiene el tamaño mínimo del texto */
 }
 
 /* Ajuste del checkbox para estar alineado */
@@ -99,6 +100,7 @@ input[type="checkbox"] {
     accent-color: #00aaff;
     margin-right: 5px;
 }
+
 /* Botón Estilizado */
 .boton-guardar {
     background-color: #00aaff;
@@ -112,17 +114,23 @@ input[type="checkbox"] {
     margin-top: 20px;
     transition: background 0.3s, transform 0.2s;
     
-    display: block; /* Asegura que se mantenga en su línea */
-    width: fit-content; /* Ajusta el ancho al contenido */
+    display: block;
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px; /* Espaciado para que no quede pegado al borde */
+    margin-bottom: 20px;
 }
 
 /* Efecto al pasar el mouse */
 .boton-guardar:hover {
     background-color: #0088cc;
     transform: scale(1.05);
+}
+
+/* Efecto al hacer clic */
+.boton-guardar:active {
+    background-color: #0077b3;
+    transform: scale(0.98);
 }
 
 /* Efecto al hacer clic */
