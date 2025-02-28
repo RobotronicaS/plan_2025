@@ -23,7 +23,7 @@ h1 {
     font-size: 28px;
 }
 
-/* Diseño en columnas para temas */
+/* Diseño en columnas */
 .temas-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -32,19 +32,19 @@ h1 {
     text-align: left;
 }
 
-/* Bloques de Temas */
+/* Columnas de Temas */
 .temas-column {
     background: #252525;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 0px 5px #000;
-    height: 400px; /* Altura fija para cada columna */
-    overflow-y: auto; /* Habilita la barra de desplazamiento */
-    scrollbar-width: thin; /* Estiliza la barra de scroll en Firefox */
+    height: 400px; /* Altura fija */
+    overflow-y: auto; /* Activa scroll vertical */
+    scrollbar-width: thin;
     scrollbar-color: #00aaff #1e1e1e;
 }
 
-/* Scroll para Chrome, Edge y Safari */
+/* Scroll en Chrome, Edge y Safari */
 .temas-column::-webkit-scrollbar {
     width: 8px;
 }
@@ -58,49 +58,37 @@ h1 {
     background: #1e1e1e;
 }
 
-/* Títulos de los Temas */
+/* Títulos */
 .temas-column h3 {
     text-align: center;
     color: #00aaff;
 }
 
-/* Listado de Temas */
+/* Lista de Temas */
 .temas-column ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
+/* Cada tema se ajusta a su contenido */
 .temas-column li {
-    margin-bottom: 8px;
     display: flex;
     align-items: center;
+    gap: 10px; /* Espacio entre el checkbox y el texto */
+    margin-bottom: 8px;
+    white-space: nowrap; /* Evita que el texto se corte en varias líneas */
 }
 
-/* Etiquetas de los temas */
+/* Asegura que el texto se ajuste sin desbordar */
 .temas-column label {
-    margin-left: 10px;
+    display: inline-block;
     font-size: 16px;
+    flex-grow: 1; /* Ocupa el espacio restante */
+    word-break: break-word; /* Permite que el texto se ajuste si es muy largo */
 }
 
-/* Botón Estilizado */
-button {
-    background-color: #00aaff;
-    color: #121212;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background-color: #0088cc;
-}
-
-/* Estilo para los checkboxes */
+/* Ajuste del checkbox */
 input[type="checkbox"] {
     transform: scale(1.2);
     accent-color: #00aaff;
