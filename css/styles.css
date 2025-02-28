@@ -1,49 +1,87 @@
+/* Tema oscuro profesional */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    background-color: #121212;
+    color: #e0e0e0;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     width: 80%;
-    margin: auto;
-    background: white;
+    margin: 20px auto;
+    background: #1e1e1e;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px #ddd;
+    box-shadow: 0px 0px 10px #000;
 }
 
+/* Encabezado */
 h1 {
-    color: #333;
+    color: #00aaff;
+    font-size: 28px;
 }
 
-/* Diseño en columnas para los temas */
+/* Estilo de columnas para temas */
 .temas-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;  /* 2 columnas */
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     margin-top: 20px;
     text-align: left;
 }
 
-/* Asegura que cada sección se mantenga alineada */
+/* Estilo de cada bloque de temas */
 .temas-column {
-    background: #f0f0f0;
+    background: #252525;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0px 0px 5px #ccc;
+    box-shadow: 0px 0px 5px #000;
 }
 
 .temas-column h3 {
     text-align: center;
+    color: #00aaff;
 }
 
-/* Espaciado entre los temas */
+/* Lista de temas */
 .temas-column ul {
     list-style-type: none;
     padding: 0;
 }
 
 .temas-column li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.temas-column label {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+/* Botón Estilizado */
+button {
+    background-color: #00aaff;
+    color: #121212;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #0088cc;
+}
+
+/* Estilo para los checkboxes */
+input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #00aaff;
 }
