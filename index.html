@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seguimiento de temas teóricos y prácticos.">
     <title>Seguimiento de Temas</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -10,7 +11,7 @@
     <div class="container">
         <h1>Seguimiento de Temas del Año</h1>
 
-        <div class="temas-container">
+        <div id="temasContainer" class="temas-container">
             <div class="temas-column">
                 <h3>Temas Teóricos</h3>
                 <ul id="temasTeoricos"></ul>
@@ -22,10 +23,9 @@
             </div>
         </div>
 
-        <button onclick="guardarProgreso()">Guardar Progreso</button>
+        <button class="boton-guardar" onclick="guardarProgreso()">Guardar Progreso</button>
     </div>
 
     <script src="js/app.js"></script>
 </body>
 </html>
-
