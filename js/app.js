@@ -94,11 +94,12 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarTemas();
 });
 
-// Función para mostrar los temas correctamente
+// Función para mostrar los temas correctamente con opción de descripción
 function mostrarTemas() {
     let datos = JSON.parse(localStorage.getItem("progreso")) || {
         teoricos: Array(temasTeoricos.length).fill(false),
-        practicos: Array(temasPracticos.length).fill(false)
+        practicos: Array(temasPracticos.length).fill(false),
+        descripciones: {} // Objeto para almacenar las descripciones
     };
 
     const contTeoricos = document.getElementById("temasTeoricos");
@@ -108,29 +109,53 @@ function mostrarTemas() {
     contPracticos.innerHTML = "";
 
     temasTeoricos.forEach((tema, i) => {
+        let descripcion = datos.descripciones[`teorico${i}`] || "";
         contTeoricos.innerHTML += `<li>
             <input type="checkbox" id="teorico${i}" ${datos.teoricos[i] ? "checked" : ""}>
             <label for="teorico${i}">${tema}</label>
+            <button class="btn-descripcion" onclick="agregarDescripcion('teorico${i}')">📝</button>
+            <textarea id="desc-teorico${i}" class="descripcion oculto">${descripcion}</textarea>
         </li>`;
     });
 
     temasPracticos.forEach((tema, i) => {
+        let descripcion = datos.descripciones[`practico${i}`] || "";
         contPracticos.innerHTML += `<li>
             <input type="checkbox" id="practico${i}" ${datos.practicos[i] ? "checked" : ""}>
             <label for="practico${i}">${tema}</label>
+            <button class="btn-descripcion" onclick="agregarDescripcion('practico${i}')">📝</button>
+            <textarea id="desc-practico${i}" class="descripcion oculto">${descripcion}</textarea>
         </li>`;
     });
 
-    // Asegurar que los temas sean visibles
     document.getElementById("temasContainer").classList.remove("hidden");
 }
 
-// Guardar progreso en `localStorage`
+// Función para agregar una descripción a un tema
+function agregarDescripcion(id) {
+    let textarea = document.getElementById(`desc-${id}`);
+    let datos = JSON.parse(localStorage.getItem("progreso")) || { descripciones: {} };
+
+    // Mostrar/ocultar el campo de texto
+    if (textarea.classList.contains("oculto")) {
+        textarea.classList.remove("oculto");
+    } else {
+        textarea.classList.add("oculto");
+    }
+
+    // Guardar la descripción cuando el usuario salga del campo de texto
+    textarea.addEventListener("blur", () => {
+        datos.descripciones[id] = textarea.value;
+        localStorage.setItem("progreso", JSON.stringify(datos));
+    });
+}
+
+// Función para guardar progreso en `localStorage`
 function guardarProgreso() {
-    let datos = {
-        teoricos: temasTeoricos.map((_, i) => document.getElementById(`teorico${i}`).checked),
-        practicos: temasPracticos.map((_, i) => document.getElementById(`practico${i}`).checked)
-    };
+    let datos = JSON.parse(localStorage.getItem("progreso")) || { descripciones: {} };
+
+    datos.teoricos = temasTeoricos.map((_, i) => document.getElementById(`teorico${i}`).checked);
+    datos.practicos = temasPracticos.map((_, i) => document.getElementById(`practico${i}`).checked);
 
     localStorage.setItem("progreso", JSON.stringify(datos));
     alert("Progreso guardado.");
