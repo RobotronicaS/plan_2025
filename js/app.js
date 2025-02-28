@@ -103,6 +103,12 @@ function mostrarTemas() {
 
     const contTeoricos = document.getElementById("temasTeoricos");
     const contPracticos = document.getElementById("temasPracticos");
+    const temasContainer = document.getElementById("temasContainer");
+
+    if (!contTeoricos || !contPracticos || !temasContainer) {
+        console.error("Algunos elementos no fueron encontrados en el DOM.");
+        return;
+    }
 
     contTeoricos.innerHTML = "";
     contPracticos.innerHTML = "";
@@ -121,15 +127,20 @@ function mostrarTemas() {
         </li>`;
     });
 
-    // Asegurar que los temas sean visibles
-    document.getElementById("temasContainer").classList.remove("hidden");
+    temasContainer.classList.remove("hidden");
 }
 
 // Guardar progreso en `localStorage`
 function guardarProgreso() {
     let datos = {
-        teoricos: temasTeoricos.map((_, i) => document.getElementById(`teorico${i}`).checked),
-        practicos: temasPracticos.map((_, i) => document.getElementById(`practico${i}`).checked)
+        teoricos: temasTeoricos.map((_, i) => {
+            let checkbox = document.getElementById(`teorico${i}`);
+            return checkbox ? checkbox.checked : false;
+        }),
+        practicos: temasPracticos.map((_, i) => {
+            let checkbox = document.getElementById(`practico${i}`);
+            return checkbox ? checkbox.checked : false;
+        })
     };
 
     localStorage.setItem("progreso", JSON.stringify(datos));
