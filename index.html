@@ -13,17 +13,15 @@
         <div class="student-section">
             <label for="nombreEstudiante">Nombre del Estudiante:</label>
             <input type="text" id="nombreEstudiante" placeholder="Ingrese el nombre">
-            <button onclick="seleccionarEstudiante()">Seleccionar</button>
+            <button id="btnSeleccionar">Seleccionar</button>
         </div>
 
         <div id="temasContainer" class="temas-container hidden">
-            <!-- Columna de Temas Teóricos -->
             <div class="temas-column">
                 <h3>Temas Teóricos</h3>
                 <ul id="temasTeoricos"></ul>
             </div>
 
-            <!-- Columna de Temas Prácticos -->
             <div class="temas-column">
                 <h3>Temas Prácticos</h3>
                 <ul id="temasPracticos"></ul>
@@ -34,5 +32,9 @@
     </div>
 
     <script src="js/app.js"></script>
+    <script>
+        document.getElementById("btnSeleccionar").addEventListener("click", seleccionarEstudiante);
+    </script>
 </body>
 </html>
+
