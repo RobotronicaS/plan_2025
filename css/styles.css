@@ -99,3 +99,31 @@ input[type="checkbox"] {
     accent-color: #00aaff;
     margin-right: 5px;
 }
+/* Estilo para el botón de "Guardar Progreso" */
+button {
+    background-color: #00aaff;
+    color: #121212;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s, transform 0.2s;
+    display: block; /* Asegura que ocupe su espacio */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Efecto al pasar el mouse */
+button:hover {
+    background-color: #0088cc;
+    transform: scale(1.05);
+}
+
+/* Efecto al hacer clic */
+button:active {
+    background-color: #0077b3;
+    transform: scale(0.98);
+}
