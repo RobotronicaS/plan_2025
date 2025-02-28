@@ -138,3 +138,39 @@ input[type="checkbox"] {
     background-color: #0077b3;
     transform: scale(0.98);
 }
+/* Botón de descripción */
+.btn-descripcion {
+    background-color: #ffcc00;
+    color: #121212;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background 0.3s;
+}
+
+.btn-descripcion:hover {
+    background-color: #e6b800;
+}
+
+/* Área de texto para descripciones */
+.descripcion {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 14px;
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #00aaff;
+    border-radius: 5px;
+    resize: none;
+}
+
+/* Ocultar la descripción hasta que el usuario haga clic */
+.oculto {
+    display: none;
+}
