@@ -23,7 +23,7 @@ h1 {
     font-size: 28px;
 }
 
-/* Estilo de columnas para temas */
+/* Diseño en columnas para temas */
 .temas-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -32,20 +32,39 @@ h1 {
     text-align: left;
 }
 
-/* Estilo de cada bloque de temas */
+/* Bloques de Temas */
 .temas-column {
     background: #252525;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 0px 5px #000;
+    height: 400px; /* Altura fija para cada columna */
+    overflow-y: auto; /* Habilita la barra de desplazamiento */
+    scrollbar-width: thin; /* Estiliza la barra de scroll en Firefox */
+    scrollbar-color: #00aaff #1e1e1e;
 }
 
+/* Scroll para Chrome, Edge y Safari */
+.temas-column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.temas-column::-webkit-scrollbar-thumb {
+    background-color: #00aaff;
+    border-radius: 5px;
+}
+
+.temas-column::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+/* Títulos de los Temas */
 .temas-column h3 {
     text-align: center;
     color: #00aaff;
 }
 
-/* Lista de temas */
+/* Listado de Temas */
 .temas-column ul {
     list-style-type: none;
     padding: 0;
@@ -57,6 +76,7 @@ h1 {
     align-items: center;
 }
 
+/* Etiquetas de los temas */
 .temas-column label {
     margin-left: 10px;
     font-size: 16px;
