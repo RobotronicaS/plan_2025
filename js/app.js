@@ -90,14 +90,16 @@ const temasPracticos = [
     "Tema Práctico 41: Resolución de Ejercicios Avanzados en Programación y Arquitectura Z80"
 ];
 
-// Cargar los temas cuando la página se abre
 document.addEventListener("DOMContentLoaded", () => {
     mostrarTemas();
 });
 
 // Función para mostrar los temas correctamente
 function mostrarTemas() {
-    let datos = JSON.parse(localStorage.getItem("progreso")) || { teoricos: Array(42).fill(false), practicos: Array(42).fill(false) };
+    let datos = JSON.parse(localStorage.getItem("progreso")) || {
+        teoricos: Array(temasTeoricos.length).fill(false),
+        practicos: Array(temasPracticos.length).fill(false)
+    };
 
     const contTeoricos = document.getElementById("temasTeoricos");
     const contPracticos = document.getElementById("temasPracticos");
