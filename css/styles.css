@@ -50,7 +50,7 @@ h1 {
     box-shadow: 0 0 5px #000;
     height: 400px;
     overflow-y: auto;
-    overflow-x: auto;
+    overflow-x: scroll;
     white-space: nowrap;
     scrollbar-width: thin;
     scrollbar-color: var(--acento) var(--fondo-secundario);
