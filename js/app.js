@@ -148,28 +148,49 @@ function renderizarTemas() {
     contPracticos.innerHTML = htmlPracticos;
 }
 
+// Variables globales para saber qué descripción estamos editando
+let currentEditIndex = null;
+let currentEditType = null;
+
 function editarDescripcion(index, tipo) {
+    currentEditIndex = index;
+    currentEditType = tipo;
     const datos = obtenerDatos();
-    // Obtener la descripción actual según el tipo
     let currentDescripcion = (tipo === "teorico")
         ? datos.descripcionesTeoricos[index]
         : datos.descripcionesPracticos[index];
-
-    // Mostrar el prompt con la descripción actual como valor por defecto
-    const nuevaDescripcion = prompt("Ingrese la nueva descripción:", currentDescripcion);
-    if (nuevaDescripcion === null) return; // Si se cancela, no se modifica nada
-
-    // Actualizar la descripción en el objeto de datos y en el DOM
-    if (tipo === "teorico") {
-        datos.descripcionesTeoricos[index] = nuevaDescripcion;
-        document.getElementById(`descripcionTeorico${index}`).textContent = nuevaDescripcion;
-    } else {
-        datos.descripcionesPracticos[index] = nuevaDescripcion;
-        document.getElementById(`descripcionPractico${index}`).textContent = nuevaDescripcion;
-    }
-
-    localStorage.setItem("progreso", JSON.stringify(datos));
+    
+    // Rellenar el textarea del modal con la descripción actual
+    document.getElementById("descripcionInput").value = currentDescripcion;
+    
+    // Mostrar el modal quitando la clase 'oculto'
+    document.getElementById("descripcionModal").classList.remove("oculto");
 }
+
+// Event listener para guardar la descripción desde el modal
+document.getElementById("guardarDescripcion").addEventListener("click", function() {
+    const nuevaDescripcion = document.getElementById("descripcionInput").value;
+    const datos = obtenerDatos();
+    
+    if (currentEditType === "teorico") {
+        datos.descripcionesTeoricos[currentEditIndex] = nuevaDescripcion;
+        // Actualizamos el elemento en el DOM, aún oculto
+        document.getElementById(`descripcionTeorico${currentEditIndex}`).textContent = nuevaDescripcion;
+    } else {
+        datos.descripcionesPracticos[currentEditIndex] = nuevaDescripcion;
+        document.getElementById(`descripcionPractico${currentEditIndex}`).textContent = nuevaDescripcion;
+    }
+    
+    localStorage.setItem("progreso", JSON.stringify(datos));
+    // Ocultar el modal
+    document.getElementById("descripcionModal").classList.add("oculto");
+});
+
+// Event listener para cancelar la edición y cerrar el modal
+document.getElementById("cancelarDescripcion").addEventListener("click", function() {
+    document.getElementById("descripcionModal").classList.add("oculto");
+});
+
 
 
 // Función para guardar el progreso (actualizando todos los datos)
