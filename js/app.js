@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarTemas();
 });
 
-// Función para mostrar los temas
+// Función para mostrar los temas correctamente
 function mostrarTemas() {
     let datos = JSON.parse(localStorage.getItem("progreso")) || {
         teoricos: Array(temasTeoricos.length).fill(false),
@@ -103,8 +103,9 @@ function mostrarTemas() {
 
     const contTeoricos = document.getElementById("temasTeoricos");
     const contPracticos = document.getElementById("temasPracticos");
+    const temasContainer = document.getElementById("temasContainer");
 
-    if (!contTeoricos || !contPracticos) {
+    if (!contTeoricos || !contPracticos || !temasContainer) {
         console.error("Algunos elementos no fueron encontrados en el DOM.");
         return;
     }
@@ -125,21 +126,23 @@ function mostrarTemas() {
             <label for="practico${i}">${tema}</label>
         </li>`;
     });
+
+    temasContainer.classList.remove("hidden");
 }
 
 // Guardar progreso en `localStorage`
 function guardarProgreso() {
     let datos = {
-        teoricos: temasTeoricos.map((_, i) => document.getElementById(`teorico${i}`).checked),
-        practicos: temasPracticos.map((_, i) => document.getElementById(`practico${i}`).checked)
+        teoricos: temasTeoricos.map((_, i) => {
+            let checkbox = document.getElementById(`teorico${i}`);
+            return checkbox ? checkbox.checked : false;
+        }),
+        practicos: temasPracticos.map((_, i) => {
+            let checkbox = document.getElementById(`practico${i}`);
+            return checkbox ? checkbox.checked : false;
+        })
     };
 
     localStorage.setItem("progreso", JSON.stringify(datos));
+    alert("Progreso guardado.");
 }
-
-// Guardado automático cuando se marca un checkbox
-document.addEventListener("change", (event) => {
-    if (event.target.type === "checkbox") {
-        guardarProgreso();
-    }
-});
