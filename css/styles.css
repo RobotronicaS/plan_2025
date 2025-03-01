@@ -49,7 +49,7 @@ h1 {
     box-shadow: 0 0 5px #000;
     height: 400px;
     overflow-y: auto;
-    overflow-x: scroll; /* Fuerza el scrollbar horizontal */
+    overflow-x: auto; /* Fuerza el scrollbar horizontal */
     white-space: nowrap;
     scrollbar-width: thin;
     scrollbar-color: #00aaff #1e1e1e;
@@ -100,7 +100,7 @@ h1 {
 
 .temas-column label {
     flex: 1 1 auto;  /* Toma el máximo espacio disponible */
-    font-size: 16px;
+    font-size: 10px;
     /* Puedes eliminar el min-width si está forzando un ancho mayor */
     /* min-width: 300px; */
 }
