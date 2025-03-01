@@ -42,7 +42,6 @@ h1 {
     text-align: left;
 }
 
-/* Columnas de Temas */
 .temas-column {
     background: #252525;
     padding: 15px;
@@ -50,11 +49,13 @@ h1 {
     box-shadow: 0 0 5px #000;
     height: 400px;
     overflow-y: auto;
-    overflow-x: scroll;
+    overflow-x: scroll; /* Fuerza el scrollbar horizontal */
     white-space: nowrap;
     scrollbar-width: thin;
-    scrollbar-color: var(--acento) var(--fondo-secundario);
+    scrollbar-color: #00aaff #1e1e1e;
 }
+
+
 
 /* Scroll en Chrome, Edge y Safari */
 .temas-column::-webkit-scrollbar {
