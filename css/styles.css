@@ -86,24 +86,24 @@ h1 {
 
 .temas-column li {
     display: flex;
-    flex-wrap: wrap;  /* Permite que se ubiquen en varias líneas si es necesario */
+    flex-wrap: nowrap;  /* Impide que se divida en varias líneas */
     align-items: center;
     gap: 10px;
     margin-bottom: 8px;
-    /* Comentamos white-space para permitir que el texto se divida en varias líneas */
-    /* white-space: nowrap; */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* Puedes ajustar o quitar min-width si es necesario */
-    /* min-width: 300px; */
+    overflow: hidden;       /* Oculta el desbordamiento */
+    text-overflow: ellipsis; /* Muestra "..." si el contenido es muy largo */
+    /* Asegúrate de que no haya un min-width fijo que impida que se reduzca */
+    min-width: 0;
 }
 
 .temas-column label {
-    flex: 1 1 auto;  /* Toma el máximo espacio disponible */
-    font-size: 10px;
-    /* Puedes eliminar el min-width si está forzando un ancho mayor */
-    /* min-width: 300px; */
+    flex: 1 1 auto;         /* Ocupa el espacio disponible */
+    font-size: 16px;
+    white-space: nowrap;    /* Evita que el texto se envuelva en más de una línea */
+    overflow: hidden;       /* Oculta el exceso de texto */
+    text-overflow: ellipsis;/* Agrega "..." al final si el texto es muy largo */
 }
+
 
 /* Checkbox */
 input[type="checkbox"] {
