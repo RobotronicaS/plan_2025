@@ -125,7 +125,7 @@ function renderizarTemas() {
                 <button class="btn-descripcion" onclick="editarDescripcion(${i}, 'teorico')">Editar descripción</button>
                 <span>Semana </span>
                 <input type="number" id="semanaTeorico${i}" value="${datos.semanasTeoricos[i]}" min="0">
-                <p id="descripcionTeorico${i}">${datos.descripcionesTeoricos[i]}</p>
+                <p id="descripcionTeorico${i}" class="oculto">${datos.descripcionesTeoricos[i]}</p>
             </li>
         `;
     });
@@ -141,7 +141,7 @@ function renderizarTemas() {
                 <button class="btn-descripcion" onclick="editarDescripcion(${i}, 'practico')">Editar descripción</button>
                 <span>Semana </span>
                 <input type="number" id="semanaPractico${i}" value="${datos.semanasPracticos[i]}" min="0">
-                <p id="descripcionPractico${i}">${datos.descripcionesPracticos[i]}</p>
+                <p id="descripcionPractico${i}" class="oculto">${datos.descripcionesPracticos[i]}</p>
             </li>
         `;
     });
