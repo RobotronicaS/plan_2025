@@ -180,4 +180,13 @@ function guardarProgreso() {
 }
 
 // Inicializar la aplicación
-document.addEventListener("DOMContentLoaded", renderizarTemas);
+//document.addEventListener("DOMContentLoaded", renderizarTemas);
+document.addEventListener("DOMContentLoaded", () => {
+    renderizarTemas();
+
+    // Actualiza el elemento con la fecha y hora de la última modificación
+    const lastUpdatedElem = document.getElementById("lastUpdated");
+    if (lastUpdatedElem) {
+        lastUpdatedElem.textContent = "Última actualización: " + document.lastModified;
+    }
+});
