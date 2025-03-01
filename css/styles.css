@@ -140,7 +140,7 @@ input[type="checkbox"] {
 }
 /* Botón de descripción */
 .btn-descripcion {
-    background-color: #ffcc00;
+    background-color: #00aaff; /* Celeste principal */
     color: #121212;
     border: none;
     padding: 5px 8px;
@@ -152,8 +152,9 @@ input[type="checkbox"] {
 }
 
 .btn-descripcion:hover {
-    background-color: #e6b800;
+    background-color: #0088cc; /* Un tono más oscuro para hover */
 }
+
 
 /* Área de texto para descripciones */
 .descripcion {
