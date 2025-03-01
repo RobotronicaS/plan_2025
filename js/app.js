@@ -121,7 +121,7 @@ function renderizarTemas() {
         htmlTeoricos += `
             <li>
                 <input type="checkbox" id="teorico${i}" ${datos.teoricos[i] ? "checked" : ""}>
-                <label for="teorico${i}">${tema}</label>
+                <label for="teorico${i}" title="${tema}">${tema}</label>
                 <button class="btn-descripcion" onclick="editarDescripcion(${i}, 'teorico')">Editar descripción</button>
                 <span>Semana </span>
                 <input type="number" id="semanaTeorico${i}" value="${datos.semanasTeoricos[i]}" min="0">
@@ -137,7 +137,7 @@ function renderizarTemas() {
         htmlPracticos += `
             <li>
                 <input type="checkbox" id="practico${i}" ${datos.practicos[i] ? "checked" : ""}>
-                <label for="practico${i}">${tema}</label>
+                <label for="practico${i}" title="${tema}">${tema}</label>
                 <button class="btn-descripcion" onclick="editarDescripcion(${i}, 'practico')">Editar descripción</button>
                 <span>Semana </span>
                 <input type="number" id="semanaPractico${i}" value="${datos.semanasPracticos[i]}" min="0">
