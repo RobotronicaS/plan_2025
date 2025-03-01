@@ -185,7 +185,7 @@ input[type="checkbox"] {
 
 /* Reducir al máximo el box de semana */
 .temas-column input[type="number"] {
-    width: 40px;      /* Ancho mínimo para el input */
+    width: 30px;      /* Ancho mínimo para el input */
     padding: 2px;     /* Reduce el padding para hacerlo más compacto */
     margin: 0 5px;    /* Margen para separar del texto */
     text-align: center;
