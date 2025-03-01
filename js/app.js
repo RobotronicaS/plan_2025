@@ -122,7 +122,7 @@ function mostrarTemas() {
         contTeoricos.innerHTML += `<li>
             <input type="checkbox" id="teorico${i}" ${datos.teoricos[i] ? "checked" : ""}>
             <label for="teorico${i}">${tema}</label>
-            <button onclick="editarDescripcion(${i}, 'teorico')">Editar descripción</button>
+            <button class="btn-descripcion" onclick="editarDescripcion(${i}, 'teorico')">Editar descripción</button>
             <span>Semana </span>
             <input type="number" id="semanaTeorico${i}" value="${datos.semanasTeoricos[i]}" min="0">
         </li>`;
@@ -132,7 +132,7 @@ function mostrarTemas() {
         contPracticos.innerHTML += `<li>
             <input type="checkbox" id="practico${i}" ${datos.practicos[i] ? "checked" : ""}>
             <label for="practico${i}">${tema}</label>
-            <button onclick="editarDescripcion(${i}, 'practico')">Editar descripción</button>
+            <button class="btn-descripcion" onclick="editarDescripcion(${i}, 'practico')">Editar descripción</button>
             <span>Semana </span>
             <input type="number" id="semanaPractico${i}" value="${datos.semanasPracticos[i]}" min="0">
         </li>`;
