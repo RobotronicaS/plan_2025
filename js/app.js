@@ -91,21 +91,6 @@ const temasPracticos = [
 ];
 
 
-// Listas de temas teóricos y prácticos
-const temasTeoricos = [
-    "Tema Teórico 0: Tipos de señales",
-    "Tema Teórico 1: Introducción a los transistores",
-    // ...
-    "Tema Teórico 41: Ejercicios"
-];
-
-const temasPracticos = [
-    "Tema Práctico 0: Introducción a Microcontroladores AVR",
-    "Tema Práctico 1: ATMEL MICROCHIP Studio",
-    // ...
-    "Tema Práctico 41: Resolución de Ejercicios Avanzados en Programación y Arquitectura Z80"
-];
-
 // Función para obtener datos de localStorage o inicializar valores predeterminados
 function obtenerDatos() {
     return JSON.parse(localStorage.getItem("progreso")) || {
