@@ -38,21 +38,70 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 0px 5px #000;
-    height: 400px;
-    overflow-y: auto;
+    height: 400px; /* Altura fija */
+    overflow-y: auto; /* Activa scroll vertical */
+    overflow-x: auto; /* Activa scroll horizontal si es necesario */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
     scrollbar-width: thin;
     scrollbar-color: #00aaff #1e1e1e;
 }
 
-/* Estilo de los checkboxes */
-input[type="checkbox"] {
-    transform: scale(1.5);
-    accent-color: #00aaff;
-    cursor: pointer;
-    margin-right: 10px;
+/* Scroll en Chrome, Edge y Safari */
+.temas-column::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
 }
 
-/* Botón Guardar */
+.temas-column::-webkit-scrollbar-thumb {
+    background-color: #00aaff;
+    border-radius: 5px;
+}
+
+.temas-column::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+/* Títulos */
+.temas-column h3 {
+    text-align: center;
+    color: #00aaff;
+}
+
+/* Lista de Temas */
+.temas-column ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    min-width: 100%; /* Asegura que los ítems se mantengan en una sola línea */
+}
+
+/* Cada tema se ajusta bien */
+.temas-column li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow: hidden; /* Asegura que el texto no se corte */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es muy largo */
+    min-width: 300px; /* Asegura que no se contraiga demasiado */
+}
+
+/* Etiquetas de los temas */
+.temas-column label {
+    font-size: 16px;
+    flex-grow: 1; /* Hace que el texto use el espacio restante */
+    min-width: 300px; /* Mantiene el tamaño mínimo del texto */
+}
+
+/* Ajuste del checkbox para estar alineado */
+input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #00aaff;
+    margin-right: 5px;
+}
+
+/* Botón Estilizado */
 .boton-guardar {
     background-color: #00aaff;
     color: #121212;
@@ -60,13 +109,68 @@ input[type="checkbox"] {
     padding: 12px 20px;
     cursor: pointer;
     font-size: 16px;
+    font-weight: bold;
     border-radius: 5px;
-    margin: 20px auto;
-    display: block;
+    margin-top: 20px;
     transition: background 0.3s, transform 0.2s;
+    
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
 }
 
+/* Efecto al pasar el mouse */
 .boton-guardar:hover {
     background-color: #0088cc;
     transform: scale(1.05);
+}
+
+/* Efecto al hacer clic */
+.boton-guardar:active {
+    background-color: #0077b3;
+    transform: scale(0.98);
+}
+
+/* Efecto al hacer clic */
+.boton-guardar:active {
+    background-color: #0077b3;
+    transform: scale(0.98);
+}
+/* Botón de descripción */
+.btn-descripcion {
+    background-color: #ffcc00;
+    color: #121212;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background 0.3s;
+}
+
+.btn-descripcion:hover {
+    background-color: #e6b800;
+}
+
+/* Área de texto para descripciones */
+.descripcion {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 14px;
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #00aaff;
+    border-radius: 5px;
+    resize: none;
+}
+
+/* Ocultar la descripción hasta que el usuario haga clic */
+.oculto {
+    display: none;
 }
