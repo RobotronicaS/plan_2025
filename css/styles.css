@@ -173,3 +173,10 @@ input[type="checkbox"] {
 .oculto {
     display: none;
 }
+@media (max-width: 600px) {
+    .temas-container {
+        display: flex;
+        overflow-x: auto; /* Permite el desplazamiento horizontal */
+        flex-wrap: nowrap; /* Evita que las columnas se envuelvan en una nueva línea */
+    }
+}
