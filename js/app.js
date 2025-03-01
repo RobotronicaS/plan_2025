@@ -91,6 +91,7 @@ const temasPracticos = [
 ];
 
 
+
 // Función para obtener datos de localStorage o inicializar valores predeterminados
 function obtenerDatos() {
     return JSON.parse(localStorage.getItem("progreso")) || {
