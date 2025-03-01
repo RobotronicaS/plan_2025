@@ -6,26 +6,26 @@
     <meta name="description" content="Seguimiento de temas teóricos y prácticos.">
     <title>Seguimiento de Temas</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Favicon opcional -->
+    <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>Seguimiento de Temas del Año</h1>
-
-        <div id="temasContainer" class="temas-container">
+    </header>
+    <main class="container">
+        <section id="temasContainer" class="temas-container" aria-label="Listado de Temas">
             <div class="temas-column">
                 <h3>Temas Teóricos</h3>
                 <ul id="temasTeoricos"></ul>
             </div>
-
             <div class="temas-column">
                 <h3>Temas Prácticos</h3>
                 <ul id="temasPracticos"></ul>
             </div>
-        </div>
-
+        </section>
         <button class="boton-guardar" onclick="guardarProgreso()">Guardar Progreso</button>
-    </div>
-
+    </main>
     <script src="js/app.js"></script>
 </body>
 </html>
