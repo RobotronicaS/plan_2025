@@ -55,8 +55,6 @@ h1 {
     scrollbar-color: #00aaff #1e1e1e;
 }
 
-
-
 /* Scroll en Chrome, Edge y Safari */
 .temas-column::-webkit-scrollbar {
     width: 8px;
@@ -176,10 +174,20 @@ input[type="checkbox"] {
 .oculto {
     display: none;
 }
+
 @media (max-width: 600px) {
     .temas-container {
         display: flex;
         overflow-x: auto; /* Permite el desplazamiento horizontal */
         flex-wrap: nowrap; /* Evita que las columnas se envuelvan en una nueva línea */
     }
+}
+
+/* Reducir al máximo el box de semana */
+.temas-column input[type="number"] {
+    width: 40px;      /* Ancho mínimo para el input */
+    padding: 2px;     /* Reduce el padding para hacerlo más compacto */
+    margin: 0 5px;    /* Margen para separar del texto */
+    text-align: center;
+    font-size: 14px;
 }
