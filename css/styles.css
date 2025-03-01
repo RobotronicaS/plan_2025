@@ -102,7 +102,7 @@ h1 {
 
 .temas-column label {
     flex: 1 1 auto;         /* Ocupa el espacio disponible */
-    font-size: 14px;
+    font-size: 12px;
     white-space: nowrap;    /* Evita que el texto se envuelva en más de una línea */
     overflow: hidden;       /* Oculta el exceso de texto */
     text-overflow: ellipsis;/* Agrega "..." al final si el texto es muy largo */
