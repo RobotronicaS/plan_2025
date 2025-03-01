@@ -92,9 +92,10 @@ const temasPracticos = [
 
 document.addEventListener("DOMContentLoaded", () => {
     mostrarTemas();
+    window.addEventListener("resize", ajustarLayout);
+    ajustarLayout();
 });
 
-// Función para mostrar los temas correctamente
 function mostrarTemas() {
     let datos = JSON.parse(localStorage.getItem("progreso")) || {
         teoricos: Array(temasTeoricos.length).fill(false),
@@ -130,7 +131,19 @@ function mostrarTemas() {
     temasContainer.classList.remove("hidden");
 }
 
-// Guardar progreso en `localStorage`
+function ajustarLayout() {
+    const temasContainer = document.getElementById("temasContainer");
+    if (!temasContainer) return;
+    
+    if (window.innerWidth < 600) {
+        temasContainer.style.display = "block";
+    } else {
+        temasContainer.style.display = "flex";
+        temasContainer.style.flexWrap = "wrap";
+        temasContainer.style.justifyContent = "space-between";
+    }
+}
+
 function guardarProgreso() {
     let datos = {
         teoricos: temasTeoricos.map((_, i) => {
