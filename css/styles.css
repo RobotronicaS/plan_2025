@@ -183,9 +183,3 @@ input[type="checkbox"] {
         flex-wrap: nowrap; /* Evita que las columnas se envuelvan en una nueva línea */
     }
 }
-.temas-column input[type="number"] {
-    width: 40px;      /* Ancho mínimo para el input */
-    padding: 2px;     /* Reduce el padding para compactarlo */
-    margin: 0 5px;    /* Opcional: margen para separar del texto */
-    text-align: center; /* Centra el número */
-}
