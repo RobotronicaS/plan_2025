@@ -139,8 +139,8 @@ input[type="checkbox"] {
 
 /* Botón de descripción */
 .btn-descripcion {
-    background-color: var(--acento);
-    color: var(--acento);
+    background-color: #d3d3d3; /* Fondo gris claro */
+    color: #000;             /* Texto en negro */
     border: none;
     padding: 5px 8px;
     cursor: pointer;
@@ -151,7 +151,7 @@ input[type="checkbox"] {
 }
 
 .btn-descripcion:hover {
-    background-color: var(--acento-hover);
+    background-color: #c0c0c0; /* Gris un poco más oscuro para hover */
 }
 
 /* Área de texto para descripciones */
