@@ -91,14 +91,24 @@ const temasPracticos = [
 ];
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    mostrarTemas();
-});
+// Listas de temas teóricos y prácticos
+const temasTeoricos = [
+    "Tema Teórico 0: Tipos de señales",
+    "Tema Teórico 1: Introducción a los transistores",
+    // ...
+    "Tema Teórico 41: Ejercicios"
+];
 
-// Función para mostrar los temas, agregando botones para editar descripción y campos para semana
-function mostrarTemas() {
-    // Se cargan los datos guardados o se inicializan los arrays para checkboxes, semanas y descripciones
-    let datos = JSON.parse(localStorage.getItem("progreso")) || {
+const temasPracticos = [
+    "Tema Práctico 0: Introducción a Microcontroladores AVR",
+    "Tema Práctico 1: ATMEL MICROCHIP Studio",
+    // ...
+    "Tema Práctico 41: Resolución de Ejercicios Avanzados en Programación y Arquitectura Z80"
+];
+
+// Función para obtener datos de localStorage o inicializar valores predeterminados
+function obtenerDatos() {
+    return JSON.parse(localStorage.getItem("progreso")) || {
         teoricos: Array(temasTeoricos.length).fill(false),
         practicos: Array(temasPracticos.length).fill(false),
         semanasTeoricos: Array(temasTeoricos.length).fill(0),
@@ -106,22 +116,23 @@ function mostrarTemas() {
         descripcionesTeoricos: Array(temasTeoricos.length).fill(""),
         descripcionesPracticos: Array(temasPracticos.length).fill("")
     };
+}
 
+// Función para renderizar la lista de temas
+function renderizarTemas() {
+    const datos = obtenerDatos();
     const contTeoricos = document.getElementById("temasTeoricos");
     const contPracticos = document.getElementById("temasPracticos");
-    const temasContainer = document.getElementById("temasContainer");
 
-    if (!contTeoricos || !contPracticos || !temasContainer) {
-        console.error("Algunos elementos no fueron encontrados en el DOM.");
+    if (!contTeoricos || !contPracticos) {
+        console.error("Elementos del DOM no encontrados.");
         return;
     }
 
-    contTeoricos.innerHTML = "";
-    contPracticos.innerHTML = "";
-
-    // Renderizamos cada tema teórico con su checkbox, botón para editar descripción, input de semana y párrafo de descripción
+    // Construir HTML para temas teóricos
+    let htmlTeoricos = "";
     temasTeoricos.forEach((tema, i) => {
-        contTeoricos.innerHTML += `
+        htmlTeoricos += `
             <li>
                 <input type="checkbox" id="teorico${i}" ${datos.teoricos[i] ? "checked" : ""}>
                 <label for="teorico${i}">${tema}</label>
@@ -132,10 +143,12 @@ function mostrarTemas() {
             </li>
         `;
     });
+    contTeoricos.innerHTML = htmlTeoricos;
 
-    // Renderizamos cada tema práctico de forma similar
+    // Construir HTML para temas prácticos
+    let htmlPracticos = "";
     temasPracticos.forEach((tema, i) => {
-        contPracticos.innerHTML += `
+        htmlPracticos += `
             <li>
                 <input type="checkbox" id="practico${i}" ${datos.practicos[i] ? "checked" : ""}>
                 <label for="practico${i}">${tema}</label>
@@ -146,65 +159,39 @@ function mostrarTemas() {
             </li>
         `;
     });
-
-    temasContainer.classList.remove("hidden");
+    contPracticos.innerHTML = htmlPracticos;
 }
 
 // Función para editar la descripción de un tema
 function editarDescripcion(index, tipo) {
-    let nuevaDescripcion = prompt("Ingrese la nueva descripción:");
-    if (nuevaDescripcion !== null) {
-        // Se cargan los datos existentes o se inicializan los arrays si no existen
-        let datos = JSON.parse(localStorage.getItem("progreso")) || {
-            teoricos: Array(temasTeoricos.length).fill(false),
-            practicos: Array(temasPracticos.length).fill(false),
-            semanasTeoricos: Array(temasTeoricos.length).fill(0),
-            semanasPracticos: Array(temasPracticos.length).fill(0),
-            descripcionesTeoricos: Array(temasTeoricos.length).fill(""),
-            descripcionesPracticos: Array(temasPracticos.length).fill("")
-        };
+    const nuevaDescripcion = prompt("Ingrese la nueva descripción:");
+    if (nuevaDescripcion === null) return;
 
-        if (tipo === "teorico") {
-            datos.descripcionesTeoricos[index] = nuevaDescripcion;
-            document.getElementById(`descripcionTeorico${index}`).textContent = nuevaDescripcion;
-        } else {
-            datos.descripcionesPracticos[index] = nuevaDescripcion;
-            document.getElementById(`descripcionPractico${index}`).textContent = nuevaDescripcion;
-        }
-
-        localStorage.setItem("progreso", JSON.stringify(datos));
+    const datos = obtenerDatos();
+    if (tipo === "teorico") {
+        datos.descripcionesTeoricos[index] = nuevaDescripcion;
+        document.getElementById(`descripcionTeorico${index}`).textContent = nuevaDescripcion;
+    } else {
+        datos.descripcionesPracticos[index] = nuevaDescripcion;
+        document.getElementById(`descripcionPractico${index}`).textContent = nuevaDescripcion;
     }
+    localStorage.setItem("progreso", JSON.stringify(datos));
 }
 
-// Función para guardar el progreso en localStorage, incluyendo checkbox, semana y descripción
+// Función para guardar el progreso (actualizando todos los datos)
 function guardarProgreso() {
-    let datos = {
-        teoricos: temasTeoricos.map((_, i) => {
-            let checkbox = document.getElementById(`teorico${i}`);
-            return checkbox ? checkbox.checked : false;
-        }),
-        practicos: temasPracticos.map((_, i) => {
-            let checkbox = document.getElementById(`practico${i}`);
-            return checkbox ? checkbox.checked : false;
-        }),
-        semanasTeoricos: temasTeoricos.map((_, i) => {
-            let inputSemana = document.getElementById(`semanaTeorico${i}`);
-            return inputSemana ? parseInt(inputSemana.value) : 0;
-        }),
-        semanasPracticos: temasPracticos.map((_, i) => {
-            let inputSemana = document.getElementById(`semanaPractico${i}`);
-            return inputSemana ? parseInt(inputSemana.value) : 0;
-        }),
-        descripcionesTeoricos: temasTeoricos.map((_, i) => {
-            let desc = document.getElementById(`descripcionTeorico${i}`);
-            return desc ? desc.textContent : "";
-        }),
-        descripcionesPracticos: temasPracticos.map((_, i) => {
-            let desc = document.getElementById(`descripcionPractico${i}`);
-            return desc ? desc.textContent : "";
-        })
+    const datos = {
+        teoricos: temasTeoricos.map((_, i) => document.getElementById(`teorico${i}`)?.checked || false),
+        practicos: temasPracticos.map((_, i) => document.getElementById(`practico${i}`)?.checked || false),
+        semanasTeoricos: temasTeoricos.map((_, i) => parseInt(document.getElementById(`semanaTeorico${i}`)?.value) || 0),
+        semanasPracticos: temasPracticos.map((_, i) => parseInt(document.getElementById(`semanaPractico${i}`)?.value) || 0),
+        descripcionesTeoricos: temasTeoricos.map((_, i) => document.getElementById(`descripcionTeorico${i}`)?.textContent || ""),
+        descripcionesPracticos: temasPracticos.map((_, i) => document.getElementById(`descripcionPractico${i}`)?.textContent || "")
     };
 
     localStorage.setItem("progreso", JSON.stringify(datos));
     alert("Progreso guardado.");
 }
+
+// Inicializar la aplicación
+document.addEventListener("DOMContentLoaded", renderizarTemas);
