@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Seguimiento de temas teóricos y prácticos.">
     <title>Seguimiento de Temas</title>
-    <!-- Aquí se añade el parámetro de cache busting en el CSS -->
+    <!-- Cache busting en el CSS -->
     <link rel="stylesheet" href="css/styles.css?v=20250301">
     <!-- Favicon opcional -->
     <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
@@ -24,27 +24,28 @@
                 <h3>Temas Prácticos</h3>
                 <ul id="temasPracticos"></ul>
             </div>
-            <footer>
-                <p id="lastUpdated"></p>
-            </footer>
-            <!-- Modal para editar descripción -->
-            <div id="descripcionModal" class="modal oculto">
-              <div class="modal-content">
-                <h3>Editar Descripción</h3>
-                <textarea id="descripcionInput" rows="5" style="width:100%;"></textarea>
-                <div style="margin-top:10px; text-align:right;">
-                  <button id="cancelarDescripcion">Cancelar</button>
-                  <button id="guardarDescripcion">Guardar</button>
-                </div>
-              </div>
-            </div>
-            <!-- Aquí se añade el parámetro de cache busting en el JavaScript -->
-            <script src="js/app.js?v=20250301"></script>
         </section>
         <button class="boton-guardar" onclick="guardarProgreso()">Guardar Progreso</button>
     </main>
-    <script src="js/app.js"></script>
-
+    
+    <footer>
+        <p id="lastUpdated"></p>
+    </footer>
+    
+    <!-- Modal para editar descripción -->
+    <div id="descripcionModal" class="modal oculto">
+      <div class="modal-content">
+        <h3>Editar Descripción</h3>
+        <textarea id="descripcionInput" rows="5" style="width:100%;"></textarea>
+        <div style="margin-top:10px; text-align:right;">
+          <button id="cancelarDescripcion">Cancelar</button>
+          <button id="guardarDescripcion">Guardar</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Incluye el script una sola vez con cache busting -->
+    <script src="js/app.js?v=20250301"></script>
 </body>
 </html>
 
