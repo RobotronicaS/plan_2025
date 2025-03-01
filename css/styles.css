@@ -8,15 +8,16 @@
     --acento-active: #0077b3;
 }
 
-/* Tema oscuro profesional */
 body {
     font-family: Arial, sans-serif;
+    font-size: 14px; /* Ajusta este valor según lo necesites */
     background-color: var(--fondo);
     color: var(--texto);
     text-align: center;
     margin: 0;
     padding: 0;
 }
+
 
 .container {
     width: 100%;
