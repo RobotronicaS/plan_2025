@@ -148,12 +148,18 @@ function renderizarTemas() {
     contPracticos.innerHTML = htmlPracticos;
 }
 
-// Función para editar la descripción de un tema
 function editarDescripcion(index, tipo) {
-    const nuevaDescripcion = prompt("Ingrese la nueva descripción:");
-    if (nuevaDescripcion === null) return;
-
     const datos = obtenerDatos();
+    // Obtener la descripción actual según el tipo
+    let currentDescripcion = (tipo === "teorico")
+        ? datos.descripcionesTeoricos[index]
+        : datos.descripcionesPracticos[index];
+
+    // Mostrar el prompt con la descripción actual como valor por defecto
+    const nuevaDescripcion = prompt("Ingrese la nueva descripción:", currentDescripcion);
+    if (nuevaDescripcion === null) return; // Si se cancela, no se modifica nada
+
+    // Actualizar la descripción en el objeto de datos y en el DOM
     if (tipo === "teorico") {
         datos.descripcionesTeoricos[index] = nuevaDescripcion;
         document.getElementById(`descripcionTeorico${index}`).textContent = nuevaDescripcion;
@@ -161,8 +167,10 @@ function editarDescripcion(index, tipo) {
         datos.descripcionesPracticos[index] = nuevaDescripcion;
         document.getElementById(`descripcionPractico${index}`).textContent = nuevaDescripcion;
     }
+
     localStorage.setItem("progreso", JSON.stringify(datos));
 }
+
 
 // Función para guardar el progreso (actualizando todos los datos)
 function guardarProgreso() {
