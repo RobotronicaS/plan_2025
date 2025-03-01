@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Seguimiento de temas teóricos y prácticos.">
     <title>Seguimiento de Temas</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Aquí se añade el parámetro de cache busting en el CSS -->
+    <link rel="stylesheet" href="css/styles.css?v=20250301">
     <!-- Favicon opcional -->
     <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
 </head>
@@ -23,6 +24,8 @@
                 <h3>Temas Prácticos</h3>
                 <ul id="temasPracticos"></ul>
             </div>
+            <!-- Aquí se añade el parámetro de cache busting en el JavaScript -->
+            <script src="js/app.js?v=20250301"></script>
         </section>
         <button class="boton-guardar" onclick="guardarProgreso()">Guardar Progreso</button>
     </main>
