@@ -27,6 +27,17 @@
             <footer>
                 <p id="lastUpdated"></p>
             </footer>
+            <!-- Modal para editar descripción -->
+            <div id="descripcionModal" class="modal oculto">
+              <div class="modal-content">
+                <h3>Editar Descripción</h3>
+                <textarea id="descripcionInput" rows="5" style="width:100%;"></textarea>
+                <div style="margin-top:10px; text-align:right;">
+                  <button id="cancelarDescripcion">Cancelar</button>
+                  <button id="guardarDescripcion">Guardar</button>
+                </div>
+              </div>
+            </div>
             <!-- Aquí se añade el parámetro de cache busting en el JavaScript -->
             <script src="js/app.js?v=20250301"></script>
         </section>
